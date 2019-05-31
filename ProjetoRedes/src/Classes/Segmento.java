@@ -11,8 +11,7 @@ public class Segmento {
 	private boolean nack;
 	
 	public Segmento(int portaOrigem, int portaDestino, int numSequencia) {
-		// SE A PORTA DE DESTINO FOR NEGATIVA, LANÇO UMA EXCEÇÃO, E NÃO CRIO O OBJETO DO TIPO SEGMENTO
-		// ASSIM ACONTECE COM OS DEMAIS
+
 		if (portaDestino < 0) {
 			throw new IllegalArgumentException("A porta de destino nï¿½o pode ser negativa !");
 		}
@@ -28,7 +27,6 @@ public class Segmento {
 		this.portaOrigem = portaOrigem;
 		this.portaDestino = portaDestino;
 		this.numSequencia = numSequencia;
-		// INDO PARA FUNÇÃO setVerificador
 		setVerificador();
 		
 	}
@@ -59,12 +57,7 @@ public class Segmento {
 	public boolean isVerificador() {
 		return verificador;
 	}
-	
-	// NO SET VERIFICADOR, EU VOU DIZER SE O PACOTE ESTA CORROMPIDO OU NAO
-	// SE O NUMERO SORTIDO FOR MAIOR NA COMPARACAO DO IF, ENTAO O PACOTE NAO ESTA CORROMPIDO
-	// SETO O VERIFICADOR COMO TRUE
-	// SE ESTA CORROMPIDO
-	// SETO O VERIFICADOR COMO FALSE
+
 	public void setVerificador() {
 		SecureRandom numRandom = new SecureRandom();
 

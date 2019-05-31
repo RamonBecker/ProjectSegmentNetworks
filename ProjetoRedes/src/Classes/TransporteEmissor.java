@@ -33,14 +33,8 @@ public class TransporteEmissor {
 	public void enviaTransporte(int portaOrigem, int portaReceptor, String dados) {
 
 		int cont = 0;
-		
+
 		while (cont < janelaEnvio) {
-			
-			// ENVIO 5 SEGMENTOS(PACOTE) PARA O RECEPTOR - O TAMANHO DA JANELA É 5
-			//CRIO O SEGMENTO(PACOTE) E ADICIONO ELE NA LIST MapEmissorSEGMENTO
-			// O NUMERO DE SEQUENCIA SERA A IDENTIFICACAO DO PACOTE, E SERA A CHAVE NA LISTA - COMO SE FOSSE UM INDICE 
-			// DO ARRAYLIST
-			// INDO PARA A CLASSE SEGMENTO.......
 			mapEmissorSegmento.put(this.numSequencia, new Segmento(portaOrigem, portaReceptor, this.numSequencia));
 			alteraNumSequencia(numSequencia);
 
@@ -53,20 +47,14 @@ public class TransporteEmissor {
 	}
 
 	public void avisaTimeOut(int numSequencia) {
-		// aviso que deu time out no pacote da minha lista mapEmissorSegmento
-		// exemplo
-		// key = 1, segmento, numSequencia = 5, nack = true, ack = false
-		// e entro no metodo reenviarPacoteNumSequencia
 		reenviarPacoteNumSequencia(numSequencia);
 	}
 
 	public void reenviarPacoteNumSequencia(int numSequencia) {
-		
-		// Aqui chamo o objeto do tipo receptor
+
 		TransporteReceptor receptor = TransporteReceptor.getInstance();
 		System.out.println("Emissor recebendo pacote:" + numSequencia + " com NACK\n");
 		System.out.println("Reenviado pacote:" + numSequencia + " com ACK para o Receptor \n");
-		// Aqui capturo o pacote da minha lista mapEmissorSegmento, com a key numSequencia
 		Segmento segmento = mapEmissorSegmento.get(numSequencia);
 		segmento.setNumSequencia(numSequencia);
 		segmento.setNack(false);
