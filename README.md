@@ -1,6 +1,6 @@
-# ProjetoRedes
+# ProjectSegmentNetworks
 
-Projeto desenvolvido na discplina de Redes.
+Projeto de implementação de entrega de segmento confiável para a disciplina de Redes para o Instituto Federal de Santa Catarina
 
 - Objetivos:
 - Implementação de um algoritmo de entrega confiável;
